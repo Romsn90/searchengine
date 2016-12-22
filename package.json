@@ -1,0 +1,22 @@
+{
+  "name": "searchengine",
+  "version": "1.0.0",
+  "description": "searchengine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romsn90/searchengine.git"
+  },
+  "keywords": [
+    "searchengine"
+  ],
+  "author": "Roman Pass",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Romsn90/searchengine/issues"
+  },
+  "homepage": "https://github.com/Romsn90/searchengine#readme"
+}

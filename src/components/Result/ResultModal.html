@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{selectedResult.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+            
+            <tbody>
+                <tr>
+                    <th scope="row">Document Name</th>
+                    <td>{{selectedResult.name}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">source</th>
+                    <td>{{selectedResult.source}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">sourceURL</th>
+                    <td>{{selectedResult.sourceURL}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">creationDate</th>
+                    <td>{{selectedResult.creationDate}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Open Document</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->

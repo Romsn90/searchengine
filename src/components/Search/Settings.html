@@ -1,0 +1,19 @@
+<div>
+    <div class="switch">
+        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" data-toggle="collapse" data-target="#settings" ng-model="settings.on">
+        <label for="cmn-toggle-1"></label>
+    </div>
+    <div><h2>Settings</h2></div>
+</div>
+
+<div id="settings" class="collapse settings">
+    <div class="row">
+            <div class="col-md-6">Date</div>
+            <div class="col-md-6">
+                    <input type="checkbox" name="newsfeeds" ng-model="settings.newsfeeds">Newsfeeds<br>
+                    <input type="checkbox" name="patents" ng-model="settings.patents">Patents<br>
+                    <input type="checkbox" name="socialNetworks" ng-model="settings.socialNetworks">Social Networks<br>
+                    <input type="checkbox" name="documents" ng-model="settings.documents">Documents<br>
+            </div>
+    </div>    
+</div>
