@@ -26,6 +26,7 @@ $scope.selectedResult = {
   
   $scope.getResults = function() {
       $scope.allResults = document.searchService.getResults(); 
+      //alert(JSON.stringify( $scope.allResults));
       $scope.shownResults = $scope.allResults;
   }
   

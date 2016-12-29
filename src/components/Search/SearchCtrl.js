@@ -1,7 +1,7 @@
 angular.module('searchEngine')
 
 
-.controller('SearchCtrl', function($scope, $http, $location, $rootScope) {
+.controller('SearchCtrl', function($scope, $http, $location, $rootScope, scAuth, scData, scSearch) {
   $scope.settings = {
        on : false,
        newsfeeds: false,
@@ -17,7 +17,7 @@ angular.module('searchEngine')
             url: 'src/res/search.php'
 		  }).then(function successCallback(response) {
         
-        document.searchService.setResults(response.data);
+        document.searchService.setResults(response.data['Labels']);
         $location.path( "/results");
 		    }, function errorCallback(response) {
           
@@ -29,9 +29,10 @@ angular.module('searchEngine')
 
     $scope.clickSearch =function(settings, keywords) {
       if(keywords) {
+          document.searchService.initSearchService(scAuth, scData, scSearch, $location);
           document.searchService.setKeyWords(keywords);
-          $scope.getResults();
-          
+          //$scope.getResults();
+          document.searchService.authentication();
           
           /*if(settings.on) {
             alert("newsfeeds: " + settings.newsfeeds + "patents");
@@ -48,7 +49,7 @@ angular.module('searchEngine')
     $scope.changeStateTo = function(state) {
       $location.path( "#!/results" );
     }
-    
-
   
 });
+
+

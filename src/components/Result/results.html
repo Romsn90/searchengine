@@ -23,10 +23,11 @@
                     <filterbtns></filterbtns>
 
                     <h2>
-                        {{shownResults['labels'].length}} results found for: <span class="text-navy">"{{keyWords}}"</span>
+                        {{shownResults.length}} results found for: <span class="text-navy">"{{keyWords}}"</span>
                     </h2>
                     <small>Request time  (0.23 seconds)</small>
-                    <div class="resultList">
+                    <!--<div class="resultList">
+                        {{shownResults[0].name}}
                         <div ng-repeat="result in shownResults['labels']">
                             <div class="hr-line-dashed"></div>
                             <div class="search-result">
@@ -37,8 +38,20 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                     
+                    </div>-->
+                   <div class="resultList">
+                        {{shownResults[0].name}}
+                        <div ng-repeat="result in shownResults">
+                            <div class="hr-line-dashed"></div>
+                            <div class="search-result">
+                                <h3><a data-toggle="modal" data-target="#myModal" ng-click="selectResult(result)">{{result["name"]}}</a></h3>
+                                <a href="{{result['href']}}" class="search-link">{{result['href']}}</a>
+                                <p>
+                                    {{result["name"]}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>  
 
                     
                     <div class="hr-line-dashed"></div>

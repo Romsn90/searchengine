@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('searchEngine', ['ngAnimate', 'ngRoute'])
+angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', { templateUrl: 'src/components/Search/search.html', controller: 'SearchCtrl' })
@@ -63,7 +63,7 @@ angular.module('searchEngine', ['ngAnimate', 'ngRoute'])
 
 .directive( 'settings', function() {
   return {
-    templateUrl: '/src/components/Search/settings.html',
+    templateUrl: '/src/components/Search/Settings.html',
     controller: 'SearchCtrl'
   };
 })
