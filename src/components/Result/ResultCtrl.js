@@ -1,6 +1,6 @@
 angular.module('searchEngine')
 
-.controller('ResultCtrl', function($scope, $http, $rootScope) {
+.controller('ResultCtrl', function($scope, $http, $rootScope, searchFactory) {
 
 //will be shown in Modal
 $scope.selectedResult = {
@@ -20,24 +20,38 @@ $scope.selectedResult = {
   $scope.allResults = null;
   $scope.shownResults = null;
   
+  $scope.clickSearch = function(keywords) {
+      if(keywords) {
+          searchFactory.search(keywords,null,  $scope.getAll);
+          //$scope.getAll();
+      } else {
+        swal("Error", "No Keywords entered!", "error");
+      }
+      
+     
+    }
+  
+  
   $scope.getKeyWords = function() {
-      $scope.keyWords = document.searchService.getKeyWords(); 
+      $scope.keyWords = searchFactory.getKeyWords(); 
   }
   
   $scope.getResults = function() {
-      $scope.allResults = document.searchService.getResults(); 
+      $scope.allResults = searchFactory.getResults(); 
       //alert(JSON.stringify( $scope.allResults));
       $scope.shownResults = $scope.allResults;
   }
   
-  $scope.getResults();
-  $scope.getKeyWords();
+  
+  
 
-  $scope.doSomething = function() {
+  $scope.getAll = function() {
     $scope.getResults();
     $scope.getKeyWords();
   }
-
+  
+  $scope.getAll();
+  
   //select Result for Modal
   $scope.selectResult = function(result) {
       $scope.selectedResult = result;

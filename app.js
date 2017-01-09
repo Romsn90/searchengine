@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex'])
+angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-search'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', { templateUrl: 'src/components/Search/search.html', controller: 'SearchCtrl' })
@@ -19,6 +19,20 @@ angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex'])
       $scope.activeRoute = routeNavigation.activeRoute;
     }
   };
+})
+
+.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+ 
+                event.preventDefault();
+            }
+        });
+    };
 })
 
 .factory('routeNavigation', function($route, $location) {
