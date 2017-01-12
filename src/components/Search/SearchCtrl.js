@@ -1,11 +1,17 @@
 angular.module('searchEngine')
 
+.value('$strapConfig', {
+  datepicker: {
+    language: 'fr',
+    format: 'M d, yyyy'
+  }
+})
 
 .controller('SearchCtrl', function($scope, $http, $location, $rootScope, searchFactory) {
   $scope.settings = {
        on : false,
        newsfeeds: false,
-       patents: false,
+       //patents: false,
        socialNetworks: false,
        documents:false
      };
@@ -51,3 +57,4 @@ angular.module('searchEngine')
     }
   
 });
+

@@ -8,10 +8,15 @@
 
 <div id="settings" class="collapse settings">
     <div class="row">
-            <div class="col-md-6">Date</div>
+            <div class="col-md-6">Date
+                <div class="control-group input-append">
+                    <input type="text" ng-model="datepicker.date" data-date-format="dd/mm/yyyy" bs-datepicker>
+                    <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+                </div>
+            </div>
             <div class="col-md-6">
                     <input type="checkbox" name="newsfeeds" ng-model="settings.newsfeeds">Newsfeeds<br>
-                    <input type="checkbox" name="patents" ng-model="settings.patents">Patents<br>
+                    <!--<input type="checkbox" name="patents" ng-model="settings.patents">Patents<br>-->
                     <input type="checkbox" name="socialNetworks" ng-model="settings.socialNetworks">Social Networks<br>
                     <input type="checkbox" name="documents" ng-model="settings.documents">Documents<br>
             </div>

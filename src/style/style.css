@@ -1,3 +1,7 @@
+:root {
+    --scRed: #FF5252;
+    --scGray: #777;
+}
 .settings {
 	border: 1px solid black;
 	/*padding: 1em;*/
@@ -64,4 +68,24 @@ h2 {
                     
 .resultList {
     overflow-y: auto;
+}
+
+.brandText {
+    letter-spacing: 5px;
+    color: var(--scGray);
+}
+
+.sc-C {
+    /*background-color: red;*/
+      /*width: 500px;
+  height: 500px;
+  border-radius: 50%;*/
+
+  color: var(--scRed);
+
+}
+
+.blackdot {
+    font-weight: bold;
+    font-size: 200%;
 }

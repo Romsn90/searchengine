@@ -8,7 +8,8 @@ $scope.selectedResult = {
        name: null,
        source: null,
        sourceURL: null,
-       creationDate:null
+       creationDate: null,
+       downloadLink: null
 };
   
  /*$rootScope.$on("CallParentMethod", function(){
@@ -22,8 +23,10 @@ $scope.selectedResult = {
   
   $scope.clickSearch = function(keywords) {
       if(keywords) {
-          searchFactory.search(keywords,null,  $scope.getAll);
-          //$scope.getAll();
+          var filterVal = {
+              on: false
+            }
+          searchFactory.search(keywords,filterVal,  $scope.getAll);
       } else {
         swal("Error", "No Keywords entered!", "error");
       }
@@ -31,14 +34,12 @@ $scope.selectedResult = {
      
     }
   
-  
   $scope.getKeyWords = function() {
       $scope.keyWords = searchFactory.getKeyWords(); 
   }
   
   $scope.getResults = function() {
       $scope.allResults = searchFactory.getResults(); 
-      //alert(JSON.stringify( $scope.allResults));
       $scope.shownResults = $scope.allResults;
   }
   
@@ -55,6 +56,7 @@ $scope.selectedResult = {
   //select Result for Modal
   $scope.selectResult = function(result) {
       $scope.selectedResult = result;
+      $scope.selectedResult.downloadLink = "https://server.sociocortex.com/file/" + $scope.selectedResult.id;
   }
 
   //Filter
