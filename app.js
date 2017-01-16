@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-search', 'sc-filter', 'sc-upload', 'dropZone', 'ngFileUpload'/*, 'app.controller.app', 'app.directive.dropzone'*/])
+angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-search', 'sc-filter', 'sc-upload', 'dropZone', 'ngFileUpload', '720kb.datepicker'])
   .config(function($routeProvider) {
+   
     $routeProvider
       .when('/', { templateUrl: 'src/components/Search/search.html', controller: 'SearchCtrl' })
-      .when('/results', { templateUrl: 'src/components/Result/results.html', controller: 'ResultCtrl' })
+      .when('/results', { templateUrl: 'src/components/Result/results.html'/*, controller: 'ResultCtrl'/*, controllerAs: 'resCtrl'*/ })
       .when('/admin', { templateUrl: 'src/components/Admin/admin.html' })
       .when('/upload', { templateUrl: 'src/components/Upload/upload.html', controller: 'dropZoneCtrl'})
       .otherwise({ redirectTo: '/'});
@@ -58,22 +59,29 @@ angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-searc
 
 .directive( 'filterbtns', function () {
   return {
-    templateUrl: '/src/components/Result/resultRadioBtns.html',
-    controller: 'ResultCtrl'
+    templateUrl: '/src/components/Result/resultRadioBtns.html'/*,
+    controller: 'resCtrl'*/
   };
 })
 
 .directive( 'resultmodal', function() {
   return {
-    templateUrl: '/src/components/Result/ResultModal.html',
-    controller: 'ResultCtrl'
+    templateUrl: '/src/components/Result/ResultModal.html'
+    /*controller: 'resCtrl'*/
+  };
+})
+
+.directive( 'datemodal', function() {
+  return {
+    templateUrl: '/src/components/Search/SearchModal.html',
+    controller: 'SearchCtrl'
   };
 })
 
 .directive( 'pagination', function() {
   return {
-    templateUrl: '/src/components/Result/pagination.html',
-    controller: 'ResultCtrl'
+    templateUrl: '/src/components/Result/pagination.html'/*,
+    controller: 'resCtrl'*/
   };
 })
 
@@ -84,53 +92,9 @@ angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-searc
   };
 })
 
-/*.directive('dropZone', function () {
-    return {
-        scope: {
-            action: "@",
-            autoProcess: "=?",
-            callBack: "&?",
-            dataMax: "=?",
-            mimetypes: "=?",
-            message: "@?",
-        },
-        link: function (scope, element, attrs) {
-            console.log("Creating dropzone");
-
-            // Autoprocess the form
-            if (scope.autoProcess != null && scope.autoProcess == "false") {
-                scope.autoProcess = false;
-            } else {
-                scope.autoProcess = true;
-            }
-
-            // Max file size
-            if (scope.dataMax == null) {
-                scope.dataMax = Dropzone.prototype.defaultOptions.maxFilesize;
-            } else {
-                scope.dataMax = parseInt(scope.dataMax);
-            }
-
-            // Message for the uploading
-            if (scope.message == null) {
-                scope.message = Dropzone.prototype.defaultOptions.dictDefaultMessage;
-            }
-
-            element.dropzone({
-                url: scope.action,
-                maxFilesize: scope.dataMax,
-                paramName: "file",
-                acceptedFiles: scope.mimetypes,
-                maxThumbnailFilesize: scope.dataMax,
-                dictDefaultMessage: scope.message,
-                autoProcessQueue: scope.autoProcess,
-                success: function (file, response) {
-                    if (scope.callBack != null) {
-                        scope.callBack({response: response});
-                    }
-                }
-            });
-        }
-    }
-})*/
-      
+.directive( 'timeline', function() {
+  return {
+    templateUrl: '/src/components/Result/timeline.html',
+    controller: 'TimelineCtrl'
+  };
+})

@@ -37,7 +37,7 @@ $scope.settings = {
     if(filterVal.on == false) {
       return items;
     } else {
-      alert("filter might not work!");
+      alert("filter might not work! " + JSON.stringify(filterVal));
       var filter = [];
         for(var res = 0; res < items.length; res++) {
           if(items.documents && items[res]["Information Source"] == informationSource.INTERNAL_DOCUMENT) {

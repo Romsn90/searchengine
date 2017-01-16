@@ -10,6 +10,7 @@ angular.module('searchEngine')
 .controller('SearchCtrl', function($scope, $http, $location, $rootScope, searchFactory) {
   $scope.settings = {
        on : false,
+       creationDate: null,
        newsfeeds: false,
        //patents: false,
        socialNetworks: false,
@@ -30,6 +31,17 @@ angular.module('searchEngine')
 	      });
   }
 	
+  $scope.hideModal = function() {
+    $('#dateModal').modal('hide');
+  }
+  
+
+  $('.modal-backdrop').on('click', function(e) {
+    // your function...
+    alert("hi");
+
+  });
+
 
 
     $scope.clickSearch = function(settings, keywords) {

@@ -44,8 +44,11 @@ input.cmn-toggle-round + label:after {
   transition: margin 0.4s;
 }
 input.cmn-toggle-round:checked + label:before {
-  background-color: #8ce196;
+  /*background-color: #8ce196;*/
+  background-color: var(--scGray);
 }
 input.cmn-toggle-round:checked + label:after {
   margin-left: 40px;
+  /*background-color: var(--scGray);*/
 }
+

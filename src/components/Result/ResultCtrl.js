@@ -12,10 +12,18 @@ $scope.selectedResult = {
        downloadLink: null
 };
   
- /*$rootScope.$on("CallParentMethod", function(){
-           $scope.getResults();
-           $scope.getKeyWords();
-  });*/
+  $scope.$on('timelineModal', function (event, id) { 
+    for(var i = 0; i < $scope.allResults.length; i++) {
+      if($scope.allResults[i].id == id) {
+        $scope.selectResult($scope.allResults[i]);
+        $scope.$apply();
+        $('#resultModal').modal('show');
+        break;
+      }
+    }
+    
+  });
+
   
   $scope.keyWords = null;
   $scope.allResults = null;
@@ -49,6 +57,10 @@ $scope.selectedResult = {
   $scope.getAll = function() {
     $scope.getResults();
     $scope.getKeyWords();
+    //$scope.updateTimeline();
+ 
+        $rootScope.$broadcast('updateTimeline', null);
+      
   }
   
   $scope.getAll();
@@ -80,4 +92,6 @@ $scope.selectedResult = {
       var filterVal = $(this).find('input').attr('filter');
       $scope.filter(filterVal);
   });
+
+
 });

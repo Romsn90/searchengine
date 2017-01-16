@@ -2,74 +2,6 @@ angular.module("sc-upload", [])
 .factory('uploadFactory', function(scData, scUtil, Upload) {
   var data = [];
 
-
- /* var config = {
-                template:'<label class="drop-zone">'+
-                         '<input type="file" multiple accept="jpg" />'+
-                         '<div ng-transclude></div>'+       // <= transcluded stuff
-                         '</label>',
-                transclude:true,
-                replace: true,
-                require: '?ngModel',
-                link: function(scope, element, attributes, ngModel){
-                    var upload = element[0].querySelector('input');    
-                        upload.addEventListener('dragover', uploadDragOver, false);
-                        upload.addEventListener('drop', uploadFactory.uploadFileSelect, false);
-                        upload.addEventListener('change', uploadFileSelect, false);                
-                        config.scope = scope;                
-                        config.model = ngModel; 
-                }
-            }
-
-
-  var putFile = function(daten) {
-    data = daten;
-  }
-
-  var getData = function() {
-    return data;
-  }
-  
-  var uploadFileSelect = function uploadFileSelect(e) {
-       console.log(this)
-                e.stopPropagation();
-                e.preventDefault();
-                var files = e.dataTransfer ? e.dataTransfer.files: e.target.files;
-                for (var i = 0, file; file = files[i]; ++i) {
-                    console.log(file);
-                    var reader = new FileReader();
-                    reader.onload = (function(file) {
-                        return function(e) { 
-                            
-                            // Data handling (just a basic example):
-                            // [object File] produces an empty object on the model
-                            // why we copy the properties to an object containing
-                            // the Filereader base64 data from e.target.result
-                            var data={
-                                data:e.target.result,
-                                dataSize: e.target.result.length
-                            };
-                            for(var p in file){ data[p] = file[p] }
-                            //alert(JSON.stringify(data));
-      
-                            putFile(data);
-                            
-                            /*$scope.$apply(function(){ 
-                                config.model.$viewValue.push(data)
-                            })*
-
-
-
-                        }
-                    })(file);
-                    reader.readAsDataURL(file);
-                }
-  }
-  return {
-    putFile: putFile,
-    getData: getData,
-    uploadFileSelect: uploadFileSelect
-  };*/
 var getFileTypeByName = function(name) {
     var type = name.split(".")[1].toLowerCase();
     var typeValue = null;
@@ -86,6 +18,9 @@ var getFileTypeByName = function(name) {
             case 'xlsm':
                 typeValue = 3;
                 break;
+            case 'xlsx':
+                typeValue = 3;
+                break;
             case 'docx':
                 typeValue = 4;
                 break;
@@ -100,6 +35,19 @@ var getFileTypeByName = function(name) {
         }
     return typeValue;
 }
+    
+    var getFileTypeIconByName = function(name) {
+        var type = getFileTypeByName(name);
+        var pathToIcons ="/src/res/images/icons/";
+        switch (type) {
+            case 0: return pathToIcons + "txt.png"; break;
+            case 1: return pathToIcons + "txt.png"; break;
+            case 2: return pathToIcons + "pdf.png"; break;
+            case 3: return pathToIcons + "xlsx.png"; break;
+            case 4: return pathToIcons + "doc.png"; break;
+            case 5: return pathToIcons + "pptx.png"; break;
+        }
+    }
 
     var getFileType = function(file) {
         alert(file.type);
@@ -119,23 +67,26 @@ var getFileTypeByName = function(name) {
         alert("fileUploadError");
     }
     // Upload a file via the API
-    var uploadFile = function(files, callback) {//, callback) {
-        angular.forEach(files, function(file) {
+    var uploadFile = function(file, callback, errorCallback, progressCallback) {
+        //angular.forEach(files, function(file) {
         file.attributes = [];
         file.attributes.fileType = 2
-        //getFileAttributes(file);
-        //alert(JSON.stringify(file));
+
         scData.File
             .save({
-                file: file,
+                //file: file,
                 name: file.name,
-                readers: "testReader",
                 summary: "Eine Zusammenfassung",
                 sourceURL: "abc",
                 entity: {
                     id: "1p2u7e7yyml5h",
+                    attributes: { 
+                        fileType: 1, 
+                    sourceURL: "abc", 
+                    Author: "Thats me"
+                    }
                 },
-                attributeDefinitions: { 
+                attributes: { 
                     fileType: 1, 
                     sourceURL: "abc", 
                     Author: "Thats me"
@@ -143,7 +94,6 @@ var getFileTypeByName = function(name) {
                 fileType: 2
             })
             .$promise.then(function (createdFile) {
-                
                     file.upload = Upload.upload({
                     url: scUtil.getFullUrl(scUtil.paths.files +"/" +  createdFile.id + '/content'),
                     data: {file: file}
@@ -154,27 +104,34 @@ var getFileTypeByName = function(name) {
                             file.result = response.data;
                         });
                     }, function (response) {
-                        if (response.status > 0)
+                        errorCallback(file);
+                        errorCallback(file, "response.status: " + response.status + ": response.data: " + response.data);
+                        /*if (response.status > 0)
                             $scope.errorMsg = response.status + ': ' + response.data;
+                            errorCallback(file);*/
                     }, function (evt) {
-                        file.progress = Math.min(100, parseInt(100.0 * 
-                                                evt.loaded / evt.total));
-                        progress = file.progress;
+                        file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                        if(file.progress == 100) {
+                            callback(file, file.progress);
+                        } else {
+                            progressCallback(file, file.progress, evt.loaded);
+                        }
+                            
 
                     });
                 
 
 
+            }, function(reason) {
+                var errorMessage = "Eine Datei mit dieser Bezeichnung existiert bereits!"
+                errorCallback(file, errorMessage);
             })
+    }
+ 
 
-        })
-    }
-    var progress = 0;
-    var getProgress = function() {
-        return progress;
-    }
+
     return {
     uploadFile: uploadFile,
-    getProgress: getProgress
+    getFileTypeIconByName: getFileTypeIconByName
   };
 }); 

@@ -86,7 +86,7 @@ angular.module("sc-search", [])
     setResults(filterService.searchFilter(res.hints, filter));
 
     $location.path( "/results");
-    getEntity(res.hints[0].id);
+    //getEntity(res.hints[0].id);
 
     
     finalCallbackFunction();
