@@ -146,9 +146,17 @@ h2 {
     visibility: visible !important;
 }
 
-#dateModal {
+/*#dateModal {
     visibility: hidden;
-}    
+}*/    
+
+.ng-pristine.ng-untouched.ng-valid.ng-isolate-scope.ng-empty{
+    visibility: hidden !important;
+}
+
+.modal-content {
+    border: 1px solid rgba(0,0,0,0) !important;
+}
 
 
 /*Checkboxes in Settings: color for status "checked" changed to sc-Red*/

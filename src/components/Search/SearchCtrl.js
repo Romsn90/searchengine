@@ -31,7 +31,8 @@ angular.module('searchEngine')
 	      });
   }
 	
-  $scope.hideModal = function() {
+  $scope.hideModal = function(date) {
+    $scope.settings.creationDate = date;
     $('#dateModal').modal('hide');
   }
   

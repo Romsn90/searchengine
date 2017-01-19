@@ -8,8 +8,11 @@ $scope.selectedResult = {
        name: null,
        source: null,
        sourceURL: null,
-       creationDate: null,
-       downloadLink: null
+       createdAt: null,
+       lastModified: null,
+       downloadLink: null,
+       summary: null,
+       entity: null
 };
   
   $scope.$on('timelineModal', function (event, id) { 
@@ -49,6 +52,7 @@ $scope.selectedResult = {
   $scope.getResults = function() {
       $scope.allResults = searchFactory.getResults(); 
       $scope.shownResults = $scope.allResults;
+      //alert("File-Results: " + JSON.stringify($scope.allResults));
   }
   
   
@@ -72,7 +76,7 @@ $scope.selectedResult = {
   }
 
   //Filter
-  $scope.filter = function(filterVal) {
+  /*$scope.filter = function(filterVal) {
       if(filterVal == "all") {
           $scope.shownResults = $scope.allResults;
       } else {
@@ -86,7 +90,7 @@ $scope.selectedResult = {
             $scope.shownResults = {'labels': filter};
       }
       $scope.$apply();      
-  }
+  }*/
 
   $('.filterBtn').on('click', function(){
       var filterVal = $(this).find('input').attr('filter');

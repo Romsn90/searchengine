@@ -10,7 +10,9 @@ angular.module('searchEngine')
      var results = searchFactory.getResults();
      var items = [];
      for(var i = 0; i < results.length; i++) {
-       items.push({id: results[i].id, content: results[i].name, start: '2017-01-01'});//results[i].creationDate})
+        var createdAt=new Date(results[i].createdAt);
+        createdAt = createdAt.getFullYear() + "-" + ('0' + (createdAt.getMonth() + 1)).slice(-2) + "-" + ('0' + (createdAt.getDate())).slice(-2);
+       items.push({id: results[i].id, content: results[i].name, start: createdAt});
      }
      
      return items;
@@ -43,8 +45,8 @@ angular.module('searchEngine')
   }
   
   $scope.$on('updateTimeline', function (event, id) {
-    var items = $scope.getItems();
     $scope.items.clear();
+    var items = $scope.getItems();
     $scope.items.update(items);
   })
   

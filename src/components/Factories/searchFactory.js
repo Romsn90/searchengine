@@ -1,8 +1,8 @@
 angular.module("sc-search", [])
 .factory('searchFactory', function(scAuth, scSearch, scData, $location, filterService) {
 
-  var USER_LOGIN = "";
-  var USER_PASSWORD = "";
+  var USER_LOGIN = "roman.pass@tum.de";
+  var USER_PASSWORD = "8r19ada";
   var WORKSPACE_NAME = "BMW CA"
    
   var allSearchResults = [];
@@ -11,6 +11,7 @@ angular.module("sc-search", [])
   var finalCallbackFunction = null;
 
   var search = function(keywords, filter, callback) {
+        allSearchResults = [];
         setKeyWords(keywords);
         setSearchFilter(filter);
         if(callback) {
@@ -25,6 +26,7 @@ angular.module("sc-search", [])
     
   var setResults = function(results) {
 		allSearchResults = results;
+    
 	}	
 	
 	var getResults = function() {
@@ -52,10 +54,20 @@ angular.module("sc-search", [])
       //$scope.scCallback("a");
   }
     
+  var pushResult = function(result) {
+    allSearchResults.push(result);
+    if( allSearchResults.length == hintsLength) {
+      $location.path( "/results");
+      finalCallbackFunction();
+    }
+  }
+
   var getFilesSuccessful = function(res) {
-    alert("File-Results: " + JSON.stringify(res));
-    setResults(res);
-    $location.path( "/results");
+    //alert("File-Results: " + JSON.stringify(res));
+    //setResults(res);
+    pushResult(filterService.searchFilter(res, filter));
+    //setResults(filterService.searchFilter(res, filter));
+    
        
   }
     
@@ -72,10 +84,16 @@ angular.module("sc-search", [])
     alert(JSON.stringify(err));
   }
 
-  var getEntity = function(ID) {
+  var hintsLength = null;
+  var getEntity = function(hints) {
     //alert(id);
     //scData.Entity.get({id: ID}, getEntitySuccessful, getEntityError);
-    scData.Entity.getFiles({id: ID}, getFilesSuccessful, getFilesError);
+    //scData.Entity.getFiles({id: ID}, getFilesSuccessful, getFilesError);
+    hintsLength = hints.length;
+    for(var i = 0; i < hints.length; i++) {
+      scData.File.get({id: hints[i].id}, getFilesSuccessful, getFilesError);
+    }
+    
   }
     
   
@@ -83,13 +101,13 @@ angular.module("sc-search", [])
   var searchSuccessful = function(res) {
     //alert("Search-Results: " + JSON.stringify(res));
     
-    setResults(filterService.searchFilter(res.hints, filter));
-
-    $location.path( "/results");
-    //getEntity(res.hints[0].id);
+    //setResults(filterService.searchFilter(res.hints, filter));
+    getEntity(res.hints);
+    //$location.path( "/results");
+    
 
     
-    finalCallbackFunction();
+    
   }
     
   var searchError = function(err) {

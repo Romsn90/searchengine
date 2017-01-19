@@ -26,18 +26,23 @@
                 </tr>
 
                 <tr>
-                    <th scope="row">creationDate</th>
-                    <td>{{selectedResult.creationDate}}</td>
+                    <th scope="row">Erstellungsdatum</th>
+                    <td>{{selectedResult.createdAt | date:'dd.MM.yyyy' }}</td>
                 </tr>
                 
+                <tr>
+                    <th scope="row">letzte Änderung</th>
+                    <td>{{selectedResult.lastModifiedAt | date:'dd.MM.yyyy' }}</td>
+                </tr>
+
                 <tr>
                     <th scope="row">Resource Type</th>
                     <td>{{selectedResult.resourceType}}</td>
                 </tr>
                 
                 <tr>
-                    <th scope="row">Disambiguation</th>
-                    <td>{{selectedResult.disambiguation}}</td>
+                    <th scope="row">Label</th>
+                    <td>{{selectedResult.entity.name}}</td>
                 </tr>
 
             </tbody>
