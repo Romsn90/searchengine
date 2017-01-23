@@ -58,6 +58,7 @@ $scope.settings = {
 
 
   var filterResults = function(items, filterVal) {
+    alert(JSON.stringify(items));
     //return items;
     if(filterVal == "all") {
       alert("FILTER");

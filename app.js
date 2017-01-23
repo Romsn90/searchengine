@@ -59,8 +59,8 @@ angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-searc
 
 .directive( 'filterbtns', function () {
   return {
-    templateUrl: '/src/components/Result/resultRadioBtns.html'/*,
-    controller: 'resCtrl'*/
+    templateUrl: '/src/components/Result/resultRadioBtns.html',
+    controller: 'ResultCtrl'
   };
 })
 

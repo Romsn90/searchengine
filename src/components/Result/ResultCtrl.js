@@ -1,6 +1,6 @@
 angular.module('searchEngine')
 
-.controller('ResultCtrl', function($scope, $http, $rootScope, searchFactory) {
+.controller('ResultCtrl', function($scope, $http, $rootScope, searchFactory, filterService) {
 
 //will be shown in Modal
 $scope.selectedResult = {
@@ -91,11 +91,13 @@ $scope.selectedResult = {
       }
       $scope.$apply();      
   }*/
+  
 
   $('.filterBtn').on('click', function(){
       var filterVal = $(this).find('input').attr('filter');
-      $scope.filter(filterVal);
+      filterService.filterResults($scope.allResults, filterVal);
   });
+  
 
 
 });

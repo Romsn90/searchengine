@@ -55,7 +55,9 @@ angular.module("sc-search", [])
   }
     
   var pushResult = function(result) {
-    allSearchResults.push(result);
+    if(result) {
+      allSearchResults.push(result); 
+    }
     if( allSearchResults.length == hintsLength) {
       $location.path( "/results");
       finalCallbackFunction();
