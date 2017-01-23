@@ -1,8 +1,8 @@
 angular.module("sc-search", [])
 .factory('searchFactory', function(scAuth, scSearch, scData, $location, filterService) {
 
-  var USER_LOGIN = "roman.pass@tum.de";
-  var USER_PASSWORD = "8r19ada";
+  var USER_LOGIN = "";
+  var USER_PASSWORD = "";
   var WORKSPACE_NAME = "BMW CA"
    
   var allSearchResults = [];
