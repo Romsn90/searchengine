@@ -1,0 +1,204 @@
+:root {
+    --scRed: #FF5252;
+    --scGray: #777;
+}
+.settings {
+	border: 1px solid var(--scGray);
+    border-radius: 15px;
+	padding-left: 5em;
+}
+
+.outer {
+  height: 80%;
+  width: 60%;
+}
+
+.inner {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+/*Results.html*/
+
+
+.ibox-content {
+    background-color: #FFFFFF;
+    color: inherit;
+    padding: 1px 20px 20px 20px;
+    border-color: #E7EAEC;
+    border-image: none;
+    /*border-style: solid solid none;*/
+    border-width: 1px 0px;
+}
+
+.search-form {
+    margin-top: 10px;
+}
+
+.search-result h3 {
+    margin-bottom: 0;
+    color: #1E0FBE;
+}
+
+.search-result .search-link {
+    color: #006621;
+}
+
+.search-result p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.hr-line-dashed {
+    border-top: 1px dashed #E7EAEC;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 100;
+}
+
+                    
+.resultList {
+    overflow-y: auto;
+}
+
+.brandText {
+    letter-spacing: 5px;
+    color: var(--scGray);
+}
+
+.greyColor {
+    color: var(--scGray);
+}
+
+.redColor {
+    color: var(--scRed);    
+}
+
+.brandTextRed {
+    letter-spacing: 5px;
+    color: var(--scRed);
+}
+
+.blackdot {
+    font-weight: bold;
+    font-size: 200%;
+}
+
+.dropzone .dz-preview .dz-details img, .dropzone-previews .dz-preview .dz-details img {
+    top: 25% !important;
+    left: 25% !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.searchButtonColor:hover {
+    background-color: var(--scRed);
+    border-color: var(--scRed);
+}
+
+.searchButtonColor {
+    background-color: var(--scGray);
+    border-color: var(--scGray);
+}
+
+.searchButtonColor:focus {
+    background-color: var(--scGray);
+    border-color: var(--scGray);
+}
+
+.searchButtonColor:active:focus, .searchButtonColor.active:focus {
+    background-color: var(--scRed);
+    border-color: var(--scRed);
+}
+
+.filterBtn {
+    background-color: #bdbdbd;
+    border-color: #bdbdbd;
+}
+
+.filterBtn.active {
+    background-color: var(--scGray) !important;
+    border-color: var(--scGray) !important;
+}
+.filterBtn:hover {
+    background-color: var(--scGray) !important;
+    border-color: var(--scGray) !important;
+}
+
+
+._720kb-datepicker-calendar-header:nth-child(odd) {
+    background: var(--scGray) !important;
+}
+
+
+
+._720kb-datepicker-calendar {
+    visibility: visible !important;
+}
+
+/*#dateModal {
+    visibility: hidden;
+}*/    
+
+.ng-pristine.ng-untouched.ng-valid.ng-isolate-scope.ng-empty{
+    visibility: hidden !important;
+}
+
+.modal-content {
+    border: 1px solid rgba(0,0,0,0) !important;
+}
+
+
+/*Checkboxes in Settings: color for status "checked" changed to sc-Red*/
+.checkbox-scRed input[type="checkbox"]:checked + label::before,
+.checkbox-scRed input[type="radio"]:checked + label::before {
+  background-color: var(--scRed) !important;
+  border-color: var(--scRed) !important;
+}
+.checkbox-scRed input[type="checkbox"]:checked + label::after,
+.checkbox-scRed input[type="radio"]:checked + label::after {
+  color: #fff;
+}
+
+/*Timeline*/
+.vis-active {
+    box-shadow: 0 0 10px var(--scGray) !important;
+}
+
+.vis-current-time {
+    background-color: var(--scRed) !important;
+}
+
+.vis-item {
+    border-color: var(--scGray) !important;
+    background-color: var(--scGray) !important;
+    color: black;
+}
+
+.vis-item.vis-selected {
+    border-color: var(--scRed) !important;
+    background-color: var(--scRed) !important;
+    color: white;
+}
+
+/*.vis-time-axis .vis-grid.vis-saturday,
+  .vis-time-axis .vis-grid.vis-sunday {
+    background: var(--scGray);
+    color: var(--scRed);
+  }*/
+
+#switchTimeline {
+    width: 50px;
+    height: 21.42px !important;
+    border-radius: 40px;
+}

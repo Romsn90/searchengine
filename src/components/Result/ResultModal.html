@@ -1,0 +1,54 @@
+<!-- Modal -->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="resultModalLabel">{{selectedResult.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+            
+            <tbody>
+                <tr>
+                    <th scope="row">Document Name</th>
+                    <td>{{selectedResult.name}}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Source</th>
+                    <!--<td>{{selectedResult.informationSource}}</td>-->
+                    <td><a href={{selectedResult.sourceURL}} target="_blank">{{selectedResult.informationSource}}</a></td>
+                </tr>
+
+                <!--<tr>
+                    <th scope="row">sourceURL</th>
+                    <td>{{selectedResult.sourceURL}}</td>
+                </tr>-->
+
+                <tr>
+                    <th scope="row">Erstellungsdatum</th>
+                    <td>{{selectedResult.createdAt | date:'dd.MM.yyyy' }}</td>
+                </tr>
+                
+                <tr>
+                    <th scope="row">letzte Änderung</th>
+                    <td>{{selectedResult.lastModifiedAt | date:'dd.MM.yyyy' }}</td>
+                </tr>
+                
+                <tr>
+                    <th scope="row">Label</th>
+                    <td>{{selectedResult.entity.name}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href={{selectedResult.downloadLink}} class="btn btn-primary searchButtonColor">Open Document</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->

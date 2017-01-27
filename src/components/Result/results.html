@@ -1,0 +1,67 @@
+
+
+<div class="container bootstrap snippet" ng-init="getAll()" ng-controller="ResultCtrl">
+    <resultmodal></resultmodal>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    
+                    <div class="search-form">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" placeholder="Keywords" name="search" class="form-control input-lg" ng-model="keywords" ng-enter="clickSearch(keywords)">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-lg btn-primary searchButtonColor" type="button" ng-click="clickSearch(keywords)">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                   
+                    <filterbtns></filterbtns>
+
+                    <h2 class="greyColor">
+                        {{shownResults.length}} results found for: <span class="text-navy">"{{keyWords}}"</span>
+                    </h2>
+                    <!--<small>Request time  (0.23 seconds)</small>-->
+                    <!--<div class="resultList">
+                        {{shownResults[0].name}}
+                        <div ng-repeat="result in shownResults['labels']">
+                            <div class="hr-line-dashed"></div>
+                            <div class="search-result">
+                                <h3><a data-toggle="modal" data-target="#myModal" ng-click="selectResult(result)">{{result["name"]}}</a></h3>
+                                <a href="{{result['sourceURL']}}" class="search-link">{{result['sourceURL']}}</a>
+                                <p>
+                                    {{result["source"]}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>-->
+                   <div class="resultList">
+                       
+                        <div ng-repeat="result in shownResults">
+                            <div class="hr-line-dashed"></div>
+                            <div class="search-result">
+                                <h3><a data-toggle="modal" data-target="#resultModal" ng-click="selectResult(result)">{{result["name"]}}</a></h3>
+                                <!--<a href="{{result['href']}}" class="search-link">{{result['href']}}</a>-->
+                                <p>
+                                    {{result["summary"]}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>  
+
+                    
+                    <div class="hr-line-dashed"></div>
+                    
+                   <pagination></pagination>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

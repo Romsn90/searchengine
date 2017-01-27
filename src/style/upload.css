@@ -1,0 +1,47 @@
+
+/*html {box-sizing:border-box;}*,*:before,*:after{box-sizing:inherit}body{margin:50px;}*/
+/*@import url('//cdnjs.cloudflare.com/ajax/libs/dropzone/3.8.4/css/dropzone.css');*/
+
+[ng-app]>img {width:100%;}
+.one {
+    cursor:pointer;
+    overflow:hidden;
+    display:block;
+    position:relative;
+    width:100%; 
+    height:100px;
+    background:whitesmoke; 
+    border-radius:4px;
+    font:caption; 
+    text-align:center; 
+    border:1px dotted silver;
+    box-sizing:border-box;
+    
+}
+.one p { padding-top:16px; font-size:16px; } 
+.one span { display:block; font-size:10px;}    
+.one img  { position:absolute; top:0; left:0; height:100px;}
+
+.one input{
+        position:absolute;
+        top:0;right:0;bottom:0;left:0;
+        font-size:9999px;  
+        opacity:0;
+        cursor:pointer;
+    }
+
+
+.two {
+    display:block;
+    margin:30px;
+}
+
+.two span { display:none; } 
+.two .drop-zone span { display:block; font-size:10px;} 
+
+
+
+pre {
+    margin:30px;
+    font-size:10px;
+}

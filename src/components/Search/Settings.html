@@ -1,0 +1,50 @@
+
+<div>
+    <div class="switch">
+        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" data-toggle="collapse" data-target="#settings" ng-model="settings.on">
+        <label for="cmn-toggle-1"></label>
+    </div>
+    <div><h2 class="greyColor">Settings</h2></div>
+</div>
+
+<div id="settings" class="collapse settings">
+    <div class="row">
+            <div class="col-md-6"><div class="greyColor">Erstellungsdatum: {{settings.creationDate}}</div>
+                <button class="btn btn-xs btn-primary searchButtonColor" type="button" data-toggle="modal" data-target="#dateModal" >
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </button>
+                <button class="btn btn-xs btn-primary searchButtonColor" type="button" data-toggle="tooltip" title="reset Date" ng-click="settings.creationDate=null">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </button>
+
+            </div>
+            <div class="col-md-6">
+                 <div class="checkbox checkbox-circle checkbox-scRed" class="styled">
+                    <input type="checkbox" id="settingsCheckbox1" name="newsfeeds" ng-model="settings.newsfeeds">
+                    <label for="settingsCheckbox1" class="greyColor">
+                        Newsfeeds
+                    </label>
+                 </div>
+                 
+                 <div class="checkbox checkbox-circle checkbox-scRed" class="styled">
+                    <input type="checkbox" id="settingsCheckbox2" name="socialNetworks" ng-model="settings.socialNetworks">
+                    <label for="settingsCheckbox2" class="greyColor">
+                        Social Networks
+                    </label>
+                 </div>
+                 
+                 <div class="checkbox checkbox-circle checkbox-scRed" class="styled">
+                    <input type="checkbox" id="settingsCheckbox3" name="documents" ng-model="settings.documents">
+                    <label for="settingsCheckbox3" class="greyColor">
+                        Documents
+                    </label>
+                 </div>
+
+            </div>
+    </div>    
+</div>
+
+
+
+ 
+  
