@@ -12,7 +12,9 @@ angular.module("DocClassification", [])
         method: 'POST',
         url: DocClassificationURL + "pipeline/predictAndClassify",
         data: postData,
-        headers: {'Content-Type': 'application/json'}
+        headers : {
+            'Content-Type' : 'application/json'
+        }
     }).then(function successCallback(response) {
         
         swal("Error", "doc yes", "error");      

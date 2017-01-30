@@ -1,1 +1,29 @@
-<div>Admin Area</div>
+<!--<div>Admin Area</div>-->
+
+
+
+
+
+
+<div class="container bootstrap snippet" ng-init="getRSSlist()">
+ 
+    <div class="row" >
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" style="width: 80%; margin-left: 10%;">
+                    
+                   <div class="media" ng-repeat="item in list">
+          <button type="button" class="close" ng-click="deleteItem($index)" aria-hidden="true">×</button>
+          
+          
+            <a class="media-heading">
+              <div><strong>{{item.name}}</strong></div>
+            </a>
+            <small>{{item.rsslink}}</small>
+          
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

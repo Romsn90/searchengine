@@ -6,7 +6,7 @@ angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-searc
     $routeProvider
       .when('/', { templateUrl: 'src/components/Search/search.html', controller: 'SearchCtrl' })
       .when('/results', { templateUrl: 'src/components/Result/results.html'/*, controller: 'ResultCtrl'/*, controllerAs: 'resCtrl'*/ })
-      .when('/admin', { templateUrl: 'src/components/Admin/admin.html' })
+      .when('/admin', { templateUrl: 'src/components/Admin/admin.html', controller: 'AdminCtrl' })
       .when('/upload', { templateUrl: 'src/components/Upload/upload.html', controller: 'dropZoneCtrl'})
       .otherwise({ redirectTo: '/'});
   })
