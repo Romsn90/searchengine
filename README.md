@@ -10,7 +10,7 @@ To run this application, first of all you have to sign in to SocioCortex and get
 https://server.sociocortex.com
 
 
-###Work with COMPETI%bull;CORTEX
+###Work with COMPETI&bull;CORTEX
 TODO
 
 
