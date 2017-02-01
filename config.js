@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('searchEngine', ['ngAnimate', 'ngRoute'])
+var app = angular.module('searchEngine', ['ngAnimate', 'ngRoute'])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', { templateUrl: 'src/components/Search/search.html', controller: 'SearchCtrl' })

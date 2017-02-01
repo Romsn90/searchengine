@@ -202,3 +202,10 @@ h2 {
     height: 21.42px !important;
     border-radius: 40px;
 }
+
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: var(--scGray) !important;
+    border-color: var(--scGray) !important;
+}
+
