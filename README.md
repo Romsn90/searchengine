@@ -1,25 +1,10 @@
 # searchengine
 COMPETI&bull;CORTEX is a searchengine, which was developed as a part of a master thesis.
-<<<<<<< HEAD
-
-With this engine it's possible to search for documents in a SocioCortex-Workspace.
-Furthermore it's possible to drop files to SocioCortex.
-
-
-### SocioCortex
-To run this application, first of all you have to sign in to SocioCortex and get access to a workspace:
-https://server.sociocortex.com
-
-
-###Work with COMPETI%bull;CORTEX
-TODO
-=======
 
 With this engine it's possible to search for documents in a SocioCortex-Workspace.
 Furthermore it's possible to drop files to SocioCortex.
 
 Example: https://competicortex.sterotec.de
-
 
 
 ### SocioCortex
@@ -29,9 +14,6 @@ https://server.sociocortex.com
 
 ###Work with COMPETI&bull;CORTEX
 TODO
-
-<<<<<<< HEAD
-=======
 
 
 ### Attention
