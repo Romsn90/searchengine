@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-search', 'sc-filter', 'sc-upload', 'dropZone', 'ngFileUpload', '720kb.datepicker', 'DocClassification'])
+angular.module('searchEngine', ['ngAnimate', 'ngRoute', 'sociocortex', 'sc-search', 'sc-filter', 'sc-upload', 'dropZone', 'ngFileUpload', '720kb.datepicker', 'DocClassification', 'sc-auth'])
   .config(function($routeProvider) {
    
     $routeProvider

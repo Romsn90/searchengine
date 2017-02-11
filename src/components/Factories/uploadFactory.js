@@ -1,8 +1,10 @@
 angular.module("sc-upload", [])
-.factory('uploadFactory', function(scData, scUtil, Upload, scAuth, DocClassification) {
+.factory('uploadFactory', function(scData, scUtil, Upload, scAuth, DocClassification, authService) {
   var data = [];
 
-
+var authentication = function(scCallback) {
+        authService.authentication(scCallback);
+}
 // typeValue according to attribute "fileType" defined in socioCortex
 var getFileTypeByName = function(name) {
     var type = name.split(".")[1].toLowerCase();
@@ -143,6 +145,7 @@ var getFileTypeByName = function(name) {
 
     return {
     uploadFile: uploadFile,
-    getFileTypeIconByName: getFileTypeIconByName
+    getFileTypeIconByName: getFileTypeIconByName,
+    authentication: authentication
   };
 }); 

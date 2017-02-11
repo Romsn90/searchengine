@@ -8,7 +8,7 @@ $.getScript('/src/lib/dropzone/dropzone.min.js',function(){
         }
     ])
     
-  .directive('dropZone', function(uploadFactory, scUtil, scData) {
+  .directive('dropZone', function(uploadFactory, scUtil, scData, authService) {
     
     
     return function(scope, element, attrs) {
@@ -23,20 +23,23 @@ $.getScript('/src/lib/dropzone/dropzone.min.js',function(){
 
     
             var myDropzone = this;
-            
-            myDropzone.on("addedfile", function(file) {
+            var file = null;
+            myDropzone.on("addedfile", function(thisfile) {
+                file = thisfile;
+                uploadFactory.authentication(myDropzone.authSuccess);
+                /*uploadFactory.uploadFile(file, myDropzone.uploadSuccess, myDropzone.uploadFail, myDropzone.setProgress);
+                file.previewElement.children[1].style.opacity = "100"; 
+                var icon = uploadFactory.getFileTypeIconByName(file.name);
+                myDropzone.emit("thumbnail", file, icon);*/
+
+            });
+
+            myDropzone.authSuccess = function() {
                 uploadFactory.uploadFile(file, myDropzone.uploadSuccess, myDropzone.uploadFail, myDropzone.setProgress);
                 file.previewElement.children[1].style.opacity = "100"; 
                 var icon = uploadFactory.getFileTypeIconByName(file.name);
                 myDropzone.emit("thumbnail", file, icon);
-                /*if (!file.type.match(/image.* /)) {
-                    if(file.type.match(/application.zip/)){
-                        myDropzone.emit("thumbnail", file, "/src/res/images/icons/pdf.png");
-                    } else {
-                        myDropzone.emit("thumbnail", file, "/src/res/images/icons/pdf.png");
-                    }
-                }*/
-            });
+            }
   
             
             myDropzone.uploadSuccess = function(file, progress, newId) {

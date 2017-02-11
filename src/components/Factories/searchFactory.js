@@ -1,8 +1,8 @@
 angular.module("sc-search", [])
-.factory('searchFactory', function(scAuth, scSearch, scData, $location, filterService) {
+.factory('searchFactory', function(scSearch, scData, $location, filterService, authService) {
 
-  var USER_LOGIN = "";
-  var USER_PASSWORD = "";
+  /*var USER_LOGIN = "";
+  var USER_PASSWORD = "";*/
   var WORKSPACE_NAME = "BMW CA"
    
   var allSearchResults = [];
@@ -50,8 +50,8 @@ angular.module("sc-search", [])
 	}
 
 	var authentication = function() {
-      scAuth.login(USER_LOGIN, USER_PASSWORD, scCallback, scError);
-      //$scope.scCallback("a");
+      //scAuth.login(USER_LOGIN, USER_PASSWORD, scCallback, scError);
+      authService.authentication(scCallback);
   }
     
   var pushResult = function(result) {
@@ -170,9 +170,9 @@ angular.module("sc-search", [])
 
   }
     
-  var scError = function(err) {
+  /*var scError = function(err) {
     alert(JSON.stringify(res));
-  }
+}*/
 
   
   return {
