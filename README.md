@@ -23,7 +23,7 @@ The module exposes angular services: `scData`, `scModel`, `scMxl`, `scAuth`, `sc
 
 
 #### Authentication
-    Set your SocioCortex-User-Data for authentication in the searchFactory.js
+    Set your SocioCortex-User-Data for authentication in the authService.js
    
     
 #### Search Functions
