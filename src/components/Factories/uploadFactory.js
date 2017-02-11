@@ -1,5 +1,5 @@
 angular.module("sc-upload", [])
-.factory('uploadFactory', function(scData, scUtil, Upload, scAuth, DocClassification, authService) {
+.factory('uploadFactory', function(scData, scUtil, Upload, DocClassification, authService) {
   var data = [];
 
 var authentication = function(scCallback) {
