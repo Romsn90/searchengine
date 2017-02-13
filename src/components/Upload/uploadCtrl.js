@@ -23,10 +23,10 @@ $.getScript('/src/lib/dropzone/dropzone.min.js',function(){
 
     
             var myDropzone = this;
-            var file = null;
-            myDropzone.on("addedfile", function(thisfile) {
-                file = thisfile;
-                uploadFactory.authentication(myDropzone.authSuccess);
+            //var file = null;
+            myDropzone.on("addedfile", function(file) {
+                //file = thisfile;
+                uploadFactory.authentication(myDropzone.authSuccess(file));
                 /*uploadFactory.uploadFile(file, myDropzone.uploadSuccess, myDropzone.uploadFail, myDropzone.setProgress);
                 file.previewElement.children[1].style.opacity = "100"; 
                 var icon = uploadFactory.getFileTypeIconByName(file.name);
@@ -34,7 +34,7 @@ $.getScript('/src/lib/dropzone/dropzone.min.js',function(){
 
             });
 
-            myDropzone.authSuccess = function() {
+            myDropzone.authSuccess = function(file) {
                 uploadFactory.uploadFile(file, myDropzone.uploadSuccess, myDropzone.uploadFail, myDropzone.setProgress);
                 file.previewElement.children[1].style.opacity = "100"; 
                 var icon = uploadFactory.getFileTypeIconByName(file.name);
